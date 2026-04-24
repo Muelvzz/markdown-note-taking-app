@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import LandingPage from "./routes/LandingPage";
+import MainPage from "./routes/MainPage";
 import Loading from "../components/Loading";
 import NotFound from "./routes/NotFound";
 
@@ -11,6 +12,7 @@ function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LandingPage />}/>
+                <Route path="/home" element={<MainPage />}/>
                 
                 <Route path="*" element={<NotFound />}/>
             </Routes>
