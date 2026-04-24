@@ -1,7 +1,9 @@
+import Router from "./Router"
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello from the React App</h1>
+      <Router />
     </>
   )
 }
