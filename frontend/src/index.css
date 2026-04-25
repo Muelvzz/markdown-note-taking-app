@@ -1,19 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
-* {
-    font-family: "Belanosima", sans-serif;
+:root {
+    --primary-color: #206172;
+    --secondary-color: #8dd7ea;
 }
 
+* { font-family: "Belanosima", sans-serif; }
+
 body {
-    background-color: #206172;
+    background-color: var(--primary-color);
     color: white;
     height: 100%;
     box-sizing: border-box;
+    line-height: 1.15;
 }
 
 button {
-    background-color: #8dd7ea;
+    background-color: var(--secondary-color);
     color: white;
     cursor: pointer;
     padding: 5px 20px;
@@ -27,25 +31,22 @@ button:hover {
     opacity: 75%;
 }
 
-h1 {
-    font-size: 48px;
-}
-
-h2 {
-    font-size: 32px;
-}
-
-h3 {
-    font-size: 24px;
-}
-
-p {
-    font-size: 16px;
-}
+h1 { font-size: 48px; padding: 0; margin: 0;}
+h2 { font-size: 32px; }
+h3 { font-size: 24px; }
+p { font-size: 16px; }
 
 @media screen and (min-width: 1024px) {
     body {
         margin-left: 20%;
         margin-right: 20%;
     }
+}
+
+@media screen and (max-width: 768px) {
+    body { margin-left: 1rem; margin-right: 1rem; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 16px; }
+    p { font-size: 14px; }
 }
