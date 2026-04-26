@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 :root {
     --primary-color: #206172;
     --secondary-color: #8dd7ea;
@@ -14,11 +19,13 @@ body {
     height: 100%;
     box-sizing: border-box;
     line-height: 1.15;
+    animation: fadeIn 1s ease-in forwards;
 }
 
 footer {
     margin-top: 1rem;
     background-color: var(--secondary-color);
+    color: var(--primary-color);
     padding: 1rem 2rem;
 }
 
@@ -30,6 +37,7 @@ button {
     border-radius: 5px;
     font-size: 12px;
     font-style: normal;
+    color: var(--primary-color);
 }
 
 button:hover {

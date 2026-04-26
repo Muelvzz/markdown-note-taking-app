@@ -5,6 +5,7 @@ export default function Card({ image, title, description }: cardData) {
         <div className="
             bg-(--secondary-color) px-10 py-5 rounded-lg
             lg:ml-15 lg:mr-15 mt-10 flex flex-col gap-y-5
+            text-(--primary-color)
             
         ">
             <div className="flex gap-x-2 items-center">

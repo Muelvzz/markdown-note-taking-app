@@ -5,7 +5,8 @@ export default function Features() {
     return (
         <div>
             <h1 className="text-center">Features that you will love</h1>
-            <div className="grid grid-cols-2 gap-5 mt-10">
+            <div className="
+                md:grid md:grid-cols-2 flex flex-col md:gap-5 p-5">
                 { feature.map((feature) => (
                     <div key={feature.image}>
                         <Card2
