@@ -1,5 +1,5 @@
 import myLogo from '../../../assets/logo.png'
-import GetStarted from './GetStarted'
+import GetStartedBtn from './GetStartedBtn'
 
 export default function LandingNav() {
 
@@ -19,7 +19,7 @@ export default function LandingNav() {
             <div className='
                 mr-2
             '>
-                <GetStarted />
+                <GetStartedBtn />
             </div>
         </nav>
     )

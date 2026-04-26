@@ -1,4 +1,4 @@
-import GetStarted from "./GetStarted"
+import GetStartedBtn from "./GetStartedBtn"
 import heroImg from '../assets/hero-img.jpg'
 
 export default function Hero() {
@@ -14,7 +14,7 @@ export default function Hero() {
                 <p className="
                     mb-5 mt-3
                 ">Glint transforms your Markdown notes into masterpieces with intuitive tools, making every idea shine from raw thought to polished brilliance.</p>
-                <GetStarted />
+                <GetStartedBtn />
             </div>
             <div>
                 <img 
