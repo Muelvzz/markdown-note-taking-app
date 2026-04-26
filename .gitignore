@@ -1,1 +1,3 @@
 project-description.txt
+**/__pycache__/
+*.py[cod]
