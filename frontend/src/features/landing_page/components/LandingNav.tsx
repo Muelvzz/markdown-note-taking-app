@@ -13,7 +13,7 @@ export default function LandingNav() {
             <div>
                 <img 
                     src={ myLogo } alt="Logo Picture" 
-                    className='w-[6rem]'
+                    className='w-24'
                 />
             </div>
             <div className='

@@ -3,6 +3,7 @@ import Hero from "../../features/landing_page/components/Hero"
 import Solution from "../../features/landing_page/components/Solution"
 import Features from "../../features/landing_page/components/Features"
 import GetStarted from "../../features/landing_page/components/GetStarted"
+import LandingFooter from "../../features/landing_page/components/LandingFooter"
 
 export default function LandingPage() {
     return (
@@ -16,6 +17,9 @@ export default function LandingPage() {
                 <Features />
                 <GetStarted/>
             </main>
+            <footer>
+                <LandingFooter />
+            </footer>
         </>
     )
 }
