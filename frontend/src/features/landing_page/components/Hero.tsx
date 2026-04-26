@@ -1,5 +1,5 @@
 import GetStartedBtn from "./GetStartedBtn"
-import heroImg from '../assets/hero-img.jpg'
+import heroImg from '../assets/hero-img.webp'
 
 export default function Hero() {
     return (

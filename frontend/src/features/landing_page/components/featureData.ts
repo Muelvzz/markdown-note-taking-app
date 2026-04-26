@@ -1,7 +1,7 @@
-import featureGrammar from "../assets/feature-grammar.png"
-import featurePrivacy from "../assets/feature-privacy.png"
-import featureRender from "../assets/feature-render.png"
-import featureUpload from "../assets/feature-upload.png"
+import featureGrammar from "../assets/feature-grammar.webp"
+import featurePrivacy from "../assets/feature-privacy.webp"
+import featureRender from "../assets/feature-render.webp"
+import featureUpload from "../assets/feature-upload.webp"
 
 export type featureData = {
     image: string

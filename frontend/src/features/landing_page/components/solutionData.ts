@@ -1,6 +1,6 @@
-import noteIcon from "../assets/notes-icon.png"
-import convertIcon from "../assets/converting-icon.png"
-import grammarIcon from "../assets/grammar-icon.png"
+import noteIcon from "../assets/notes-icon.webp"
+import convertIcon from "../assets/converting-icon.webp"
+import grammarIcon from "../assets/grammar-icon.webp"
 
 export type cardData = {
     image: string;

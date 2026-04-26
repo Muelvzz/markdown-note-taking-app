@@ -1,4 +1,4 @@
-import myLogo from '../../../assets/logo.png'
+import myLogo from '../../../assets/logo.webp'
 import GetStartedBtn from './GetStartedBtn'
 
 export default function LandingNav() {
