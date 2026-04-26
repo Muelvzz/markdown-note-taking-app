@@ -26,7 +26,7 @@ export default function Solution() {
     };
 
     return (
-        <div className="w-full m-auto py-16 px-4 relative group">
+        <div className="w-full py-16 px-4 relative group">
             <h1 className="text-center mb-20">
                 We get it. That's why we built this
             </h1>
