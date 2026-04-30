@@ -1,8 +1,10 @@
 from fastapi import APIRouter, File, UploadFile, status, Depends
 from typing import Annotated
+from pathlib import Path
 import json
 
 from . cache import get_cache, set_cache
+from . config import allowed_extensions
 
 router = APIRouter()
 
@@ -10,11 +12,18 @@ router = APIRouter()
 async def upload_file(
     file: Annotated[UploadFile, File()],
     ):
+    file_ext = Path(file.filename).suffix.lower()
+    if file_ext not in allowed_extensions:
+        return {
+            "status_code": status.HTTP_406_NOT_ACCEPTABLE,
+            "message": f"The file must be the following {allowed_extensions}"
+        }
 
+    filename = file.filename
     content = await file.read()
 
     file_content = {
-        "filename": file.filename,
+        "filename": filename,
         "file_content": content.decode("utf-8"),
     }
     file_into_json = json.dumps(file_content)
@@ -24,7 +33,7 @@ async def upload_file(
     return { 
         "message": "Upload successfully",
         "file": {
-            "filename": file.filename,
+            "filename": filename,
             "content": content
         }
     }
