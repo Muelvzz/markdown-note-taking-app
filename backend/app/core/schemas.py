@@ -2,6 +2,19 @@ from pydantic import BaseModel
 from datetime import date
 from typing import List
 
+class UploadResponse(BaseModel):
+    status_code: int
+    message: str
+    file: dict[str, str] | None = None
+
+    @classmethod
+    def response(self, status, msg, file=None):
+        return self(status_code=status, message=msg, file=file)
+
+    class Config:
+        from_attributes = True
+
+
 class CreateNotes(BaseModel):
     file_name: str
     content: str
