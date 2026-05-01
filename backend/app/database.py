@@ -14,6 +14,8 @@ def get_db():
     db = SessionLocal()
 
     try:
+        print("Started Database Connection")
         yield db
     finally:
+        print("Closed Database Connection")
         db.close()
