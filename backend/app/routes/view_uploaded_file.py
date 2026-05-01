@@ -1,22 +1,32 @@
-from fastapi import status, File, HTTPException
+from fastapi import status, HTTPException
 import json
 
 from ..core.cache import get_cache
+from ..core import schemas
 from .router_init import router
 
-@router.get("/file", status_code=status.HTTP_200_OK)
+@router.get("/file", status_code=status.HTTP_200_OK, response_model=schemas.UploadResponse)
 async def view_uploaded_file():
+
+    status_code = 0
+    message = ""
+    file_dict = None
+
     try:
         file = await get_cache("uploaded_file")
 
         if file is None:
-            return {
-                "status_code": status.HTTP_404_NOT_FOUND,
-                "message": "File does not exist"
-            }
+            status_code = status.HTTP_404_NOT_FOUND
+            message = "File does not exist"
 
-        decoded_redis_file = json.loads(file)
-        return decoded_redis_file
+        else:
+            decoded_redis_file = json.loads(file)
+
+            status_code = status.HTTP_200_OK
+            message = "Fetch Successfully"
+            file_dict = decoded_redis_file
+
+        return schemas.UploadResponse(status_code=status_code, message=message, file=file_dict)
     
     except Exception as e:
         

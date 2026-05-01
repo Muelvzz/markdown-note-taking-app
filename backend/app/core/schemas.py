@@ -17,7 +17,7 @@ class UploadResponse(BaseModel):
 
 class CreateNotes(BaseModel):
     file_name: str
-    content: str
+    file_content: str
     
     class Config:
         from_attributes = True
