@@ -2,3 +2,5 @@ project-description.txt
 **/__pycache__/
 *.py[cod]
 backend/.env
+test.md
+test.py

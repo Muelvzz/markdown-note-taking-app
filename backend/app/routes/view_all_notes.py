@@ -1,4 +1,5 @@
 from fastapi import status, HTTPException, Depends
+from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 import json
 
@@ -7,6 +8,9 @@ from ..core.config import allowed_extensions
 from ..core.database import get_db
 from ..core import schemas, models
 from .router_init import router
+
+def object_to_dictionary(object):
+    return {c.name: getattr(object, c.name) for c in object.__table__.columns}
 
 @router.get("/notes", status_code=status.HTTP_200_OK, response_model=schemas.AllNotesOut)
 async def view_all_notes(db: Session = Depends(get_db)):
@@ -20,9 +24,11 @@ async def view_all_notes(db: Session = Depends(get_db)):
         
         else:
             all_notes_from_db = db.query(models.Notes).all()
-            all_notes = all_notes_from_db
+            all_notes = [object_to_dictionary(data) for data in all_notes_from_db]
 
-            await set_cache("all_notes", json.dumps(all_notes), 600)
+            encoded_all_notes = jsonable_encoder(all_notes)
+            print(json.dumps(encoded_all_notes))
+            await set_cache("all_notes", json.dumps(encoded_all_notes))
         
         return schemas.AllNotesOut.success(all_notes)
     

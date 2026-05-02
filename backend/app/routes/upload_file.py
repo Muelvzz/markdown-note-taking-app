@@ -1,6 +1,7 @@
 from fastapi import status, UploadFile, File, HTTPException
 from typing import Annotated
 from pathlib import Path
+from datetime import datetime
 import json
 
 from ..core.cache import set_cache
@@ -28,8 +29,8 @@ async def upload_file(
             file_content = await file.read()
 
             uploaded_file = {
-                "filename": filename,
-                "file_content": file_content.decode("utf-8"),
+                "file_name": filename,
+                "content": file_content.decode("utf-8"),
             }
 
             status_code = status.HTTP_200_OK

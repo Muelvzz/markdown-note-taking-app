@@ -2,7 +2,7 @@ from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 import json
 
-from .. core.cache import get_cache
+from .. core.cache import get_cache, set_cache, delete_cache
 from .. core import schemas
 from .. core import models
 from .. core.database import get_db
@@ -25,13 +25,15 @@ async def save_file_into_database(db: Session = Depends(get_db)):
         else:
             decoded_file = json.loads(file)
 
-            file_name = decoded_file["filename"]
-            file_content = decoded_file["file_content"]
+            file_name = decoded_file["file_name"]
+            file_content = decoded_file["content"]
 
             new_note = models.Notes(file_name=file_name, content=file_content)
             db.add(new_note)
             db.commit()
             db.refresh(new_note)
+
+            await delete_cache("all_notes")
 
             status_code = status.HTTP_202_ACCEPTED
             message = "Note saved successfully"

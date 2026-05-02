@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from datetime import date
+from datetime import datetime
 from typing import List
 
 class UploadResponse(BaseModel):
@@ -17,14 +17,14 @@ class UploadResponse(BaseModel):
 
 class CreateNotes(BaseModel):
     file_name: str
-    file_content: str
+    content: str
     
     class Config:
         from_attributes = True
 
 
 class NoteOut(CreateNotes):
-    created_at: date
+    created_at: datetime
 
     class Config:
         from_attributes = True
