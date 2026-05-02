@@ -8,8 +8,8 @@ class UploadResponse(BaseModel):
     file: dict[str, str] | None = None
 
     @classmethod
-    def response(self, status, msg, file=None):
-        return self(status_code=status, message=msg, file=file)
+    def response(cls, status, msg, file=None):
+        return cls(status_code=status, message=msg, file=file)
 
     class Config:
         from_attributes = True
@@ -22,11 +22,13 @@ class CreateNotes(BaseModel):
     class Config:
         from_attributes = True
 
+
 class NoteOut(CreateNotes):
     created_at: date
 
     class Config:
         from_attributes = True
+        
 
 class AllNotesOut(BaseModel):
     status_code: int = 200
