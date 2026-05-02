@@ -35,3 +35,8 @@ async def delete_cache(key: str):
     if not redis:
         error_redis_init()
     await redis.delete(key)
+
+async def check_cache(key: str):
+    if not redis:
+        error_redis_init()
+    return await redis.exists(key)

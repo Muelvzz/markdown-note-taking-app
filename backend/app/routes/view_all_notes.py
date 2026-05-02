@@ -27,7 +27,6 @@ async def view_all_notes(db: Session = Depends(get_db)):
             all_notes = [object_to_dictionary(data) for data in all_notes_from_db]
 
             encoded_all_notes = jsonable_encoder(all_notes)
-            print(json.dumps(encoded_all_notes))
             await set_cache("all_notes", json.dumps(encoded_all_notes))
         
         return schemas.AllNotesOut.success(all_notes)
