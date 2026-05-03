@@ -11,7 +11,6 @@ async def clear_cache(field: str):
         message = ""
 
         is_cache_exist = await check_cache(field)
-        print(f"is_cache_exist: {is_cache_exist}")
         if is_cache_exist:
             await delete_cache(field)
 

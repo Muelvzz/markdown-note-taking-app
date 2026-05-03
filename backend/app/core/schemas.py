@@ -18,13 +18,11 @@ class UploadResponse(BaseModel):
 class CreateNotes(BaseModel):
     file_name: str
     content: str
-    
-    class Config:
-        from_attributes = True
 
 
 class NoteOut(CreateNotes):
     created_at: datetime
+    id: int
 
     class Config:
         from_attributes = True

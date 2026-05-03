@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
-from app.routes import upload_file, view_uploaded_file, view_all_notes, save_file, clear_cache
+from app.routes import upload_file, view_uploaded_file, view_all_notes, save_file, clear_cache, update_note
 from app.core.cache import init_redis, close_redis
 from app.core.database import engine
 import app.core.models as database_models
@@ -25,6 +25,7 @@ app.include_router(view_uploaded_file.router)
 app.include_router(view_all_notes.router)
 app.include_router(save_file.router)
 app.include_router(clear_cache.router)
+app.include_router(update_note.router)
 
 if __name__ == "__main__":
     app()
