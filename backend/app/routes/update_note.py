@@ -7,7 +7,7 @@ from .. core.cache import delete_cache
 from . router_init import router
 
 @router.put("/file/{id}", status_code=status.HTTP_202_ACCEPTED, response_model=schemas.UploadResponse)
-async def update_file(update_note: schemas.CreateNotes, id: int, db: Session = Depends(get_db)):
+async def update_file(update_note: schemas.UploadNote, id: int, db: Session = Depends(get_db)):
     try:
         note_to_be_updated = db.query(models.Notes).filter(models.Notes.id == id).first()
 

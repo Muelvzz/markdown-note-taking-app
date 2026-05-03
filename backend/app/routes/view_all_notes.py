@@ -4,7 +4,6 @@ from sqlalchemy.orm import Session
 import json
 
 from ..core.cache import set_cache, get_cache
-from ..core.config import allowed_extensions
 from ..core.database import get_db
 from ..core import schemas, models
 from .router_init import router

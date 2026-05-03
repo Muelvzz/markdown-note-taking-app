@@ -15,14 +15,19 @@ class UploadResponse(BaseModel):
         from_attributes = True
 
 
-class CreateNotes(BaseModel):
+class BaseNote(BaseModel):
+    id: int | None = None
     file_name: str
     content: str
 
+class CreateNote(BaseNote):
+    pass
 
-class NoteOut(CreateNotes):
+class UploadNote(BaseNote):
+    pass
+
+class NoteOut(CreateNote):
     created_at: datetime
-    id: int
 
     class Config:
         from_attributes = True

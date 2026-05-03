@@ -2,7 +2,7 @@ from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 import json
 
-from .. core.cache import get_cache, set_cache, delete_cache
+from .. core.cache import get_cache, delete_cache
 from .. core import schemas
 from .. core import models
 from .. core.database import get_db
