@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LandingPage from "./routes/LandingPage";
-import MainPage from "./routes/MainPage";
+import UploadPage from "./routes/UploadPage";
 import NotFound from "./routes/NotFound";
 
 function Router() {
@@ -10,7 +10,7 @@ function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LandingPage />}/>
-                <Route path="/home" element={<MainPage />}/>
+                <Route path="/upload" element={<UploadPage />}/>
                 
                 <Route path="*" element={<NotFound />}/>
             </Routes>

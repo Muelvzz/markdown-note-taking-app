@@ -1,15 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
+/* ANIMATION */
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
+/* COLOR PALETTES */
+
 :root {
     --primary-color: #206172;
     --secondary-color: #8dd7ea;
 }
+
+/* PAGE COMPONENT STYLE */
 
 * { font-family: "Belanosima", sans-serif; }
 
@@ -29,7 +35,7 @@ footer {
     padding: 1rem 2rem;
 }
 
-button {
+button, label {
     background-color: var(--secondary-color);
     color: white;
     cursor: pointer;
@@ -40,25 +46,43 @@ button {
     color: var(--primary-color);
 }
 
-button:hover {
+button:hover, label:hover {
     transition: 0.3s;
     opacity: 75%;
 }
 
 h1 { font-size: 48px; padding: 0; margin: 0;}
 h2 { font-size: 32px; }
-h3 { font-size: 24px; }
+h3, label { font-size: 24px; }
 p { font-size: 16px; }
 
+/* SPECIFIC COMPONENT STYLES */
+
+#main-navigation {
+    padding: 1rem 2rem;
+}
+
+#no-style-button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+#no-style-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* MEDIA RESPONSIVENESS */
+
 @media screen and (min-width: 1024px) {
-    main, nav {
+    main, #landing-navigation {
         margin-left: 20%;
         margin-right: 20%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    main, nav { margin-left: 1rem; margin-right: 1rem; }
+    main, #landing-navigation { margin-left: 1rem; margin-right: 1rem; }
     h1 { font-size: 32px; }
     h2 { font-size: 24px; }
     h3 { font-size: 16px; }
