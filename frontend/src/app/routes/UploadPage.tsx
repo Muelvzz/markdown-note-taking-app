@@ -2,28 +2,31 @@ import { useState , DragEvent, ChangeEvent } from "react"
 import Nav from "../../components/Nav"
 import DropdownInfo from "../../components/DropdownInfo"
 
+import { requestUploadFile } from "../../services/backend-api"
+
 export default function UploadPage() {
     const [isDragging, setIsDragging] = useState(false)
     const [showInfo, setShowInfo] = useState(false)
     const [dropdownText, setDropdownText] = useState("")
- 
+
     const handleDragOver = (e: DragEvent<HTMLElement>) => {
         e.preventDefault()
         setIsDragging(true)
     }
-    
+
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0]
         if (file) { processFile(file) }
     }
-    
-    const processFile = (file: File) => {
+
+    const processFile = async (file: File) => {
         setShowInfo(true)
 
         if (file && file.name.endsWith('.md')) { 
+            await requestUploadFile(file)
             setDropdownText(`${ file.name } has been added to the Notes`)
         }
-        else {  setDropdownText("Please upload a Markdown (.md) file.") }
+        else { setDropdownText("Please upload a Markdown (.md) file.") }
 
         setTimeout(() => setShowInfo(false), 2000)
     }
