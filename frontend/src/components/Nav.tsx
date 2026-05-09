@@ -26,7 +26,7 @@ export default function Nav() {
                     <NavigateButtons
                         idButton=""
                         goToLink='upload'
-                        buttonText='Upload File'
+                        buttonText='Upload'
                     />
                 </div>
             </nav>

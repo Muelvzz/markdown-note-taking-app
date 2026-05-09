@@ -1,8 +1,11 @@
-import { useState, DragEvent, ChangeEvent } from "react"
+import { useState , DragEvent, ChangeEvent } from "react"
 import Nav from "../../components/Nav"
+import DropdownInfo from "../../components/DropdownInfo"
 
 export default function UploadPage() {
     const [isDragging, setIsDragging] = useState(false)
+    const [showInfo, setShowInfo] = useState(false)
+    const [dropdownText, setDropdownText] = useState("")
  
     const handleDragOver = (e: DragEvent<HTMLElement>) => {
         e.preventDefault()
@@ -15,8 +18,14 @@ export default function UploadPage() {
     }
     
     const processFile = (file: File) => {
-        if (file && file.name.endsWith('.md')) { console.log(`Processing file: ${file.name}`) }
-        else { alert("Please upload a Markdown (.md) file.") }
+        setShowInfo(true)
+
+        if (file && file.name.endsWith('.md')) { 
+            setDropdownText(`${ file.name } has been added to the Notes`)
+        }
+        else {  setDropdownText("Please upload a Markdown (.md) file.") }
+
+        setTimeout(() => setShowInfo(false), 2000)
     }
 
     const handleDragLeave = () => { setIsDragging(false) }
@@ -32,6 +41,7 @@ export default function UploadPage() {
 
     return (
         <>
+            { showInfo && <DropdownInfo dropdownText={ dropdownText }/> }
             <Nav />
             <main 
                 onDragOver={ handleDragOver }
