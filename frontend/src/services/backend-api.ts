@@ -20,3 +20,12 @@ export const requestUploadFile = async (file: File) => {
     console.error(`Network Error: ${error}`);
   }
 };
+
+export const fetchSavedNotes = async () => {
+  try {
+    const response = await api.get("/notes");
+    return response;
+  } catch (error) {
+    console.error(`Network Error: ${error}`);
+  }
+};
