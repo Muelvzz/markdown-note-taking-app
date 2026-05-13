@@ -1,31 +1,19 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import Nav from "../../components/Nav"
 import NoteCard from "../../features/notes-page/components/NoteCard"
 import searchImage from "../../features/notes-page/assets/search-img.png"
-import { fetchSavedNotes } from "../../services/backend-api"
 
-interface Note {
-    id: string
-    file_name: string
-    content: string
-    created_at: string
-}
+import { Note } from "../../config/note-page-conf"
+import { useUserNotes } from "../../hooks/note-page-hooks"
 
 export default function Notes() {
-    const [noteList, setNoteList] = useState<Note[]>([])
-    const [search, setSearch] = useState("")
+    const { noteList } = useUserNotes()
+    const [search, setSearch] = useState("") 
 
-    const fetchItems = async () => {
-        const response = await fetchSavedNotes()
-        if (response?.data?.all_notes) {
-            setNoteList(response.data.all_notes)
-        }
-    }
-
-    const handleSearch = (search: string) => { setSearch(search.toLowerCase())}
-
-    useEffect(() => { fetchItems() }, [])
+    const filteredNotes = noteList.filter((note: Note) =>
+        note.file_name.toLowerCase().includes(search.toLowerCase())
+    )
 
     return (
         <>
@@ -50,13 +38,12 @@ export default function Notes() {
                         className="w-full text-(--primary-color) px-3"
                         placeholder="Search Input"
                         value={ search }
-                        onChange={(e) => handleSearch(e.target.value)}
+                        onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
                 <div className="flex flex-col gap-y-5">
                     <NoteCard 
-                        noteList={ noteList }
-                        search={ search }
+                        notes={ filteredNotes }
                     />
                 </div>
             </main>
