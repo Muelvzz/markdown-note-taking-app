@@ -1,4 +1,4 @@
-import { NoteList } from "../../../config/note-page-conf"
+import { NoteList } from "../../../types/note-page-types"
 
 export default function NoteCard({ notes }: NoteList) {
 

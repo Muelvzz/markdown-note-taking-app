@@ -19,6 +19,10 @@
 
 * { font-family: "Belanosima", sans-serif; }
 
+html, #root, main {
+    height: 100%;
+}
+
 body {
     background-color: var(--primary-color);
     color: white;

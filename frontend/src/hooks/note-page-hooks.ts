@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Note } from "../config/note-page-conf";
+import { Note } from "../types/note-page-types";
 
 import { fetchSavedNotes } from "../services/backend-api";
 
