@@ -1,5 +1,14 @@
 export default function Loading() {
     return (
-        <h1>This is the Loading component</h1>
+        <>
+            <article className="
+                flex justify-center items-center
+                min-h-screen
+            ">
+                <div>
+                    <h1>Loading...</h1>
+                </div>
+            </article>
+        </>
     )
 }
