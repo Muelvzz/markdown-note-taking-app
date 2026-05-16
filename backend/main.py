@@ -5,10 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes import upload_file, view_uploaded_file, view_all_notes, clear_cache, update_note
 from app.core.cache import init_redis, close_redis
 from app.core.database import engine
-from app.core.config import origins
+from app.core.config import origins, notes_folder
 import app.core.models as database_models
 
 database_models.Base.metadata.create_all(bind=engine)
+
+print(f"Exist: {notes_folder.exists()}")
+if not notes_folder.exists():
+    notes_folder.mkdir(exist_ok=True)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
