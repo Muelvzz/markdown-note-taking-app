@@ -22,6 +22,15 @@ export default function Notes() {
         else { setSearchError(false) }
     }, [filteredNotes.length])
 
+    if (noteList.length === 0) { return (
+        <>
+            <Nav />
+            <main>
+                <NoSearchesFound />
+            </main>
+        </>
+    ) } 
+
     return (
         <>
             <Nav />

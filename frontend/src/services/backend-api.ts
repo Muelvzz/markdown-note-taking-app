@@ -12,12 +12,14 @@ export const requestUploadFile = async (file: File) => {
     });
   } catch (error) {
     console.error(`Network Error: ${error}`);
+    alert("Error: Could not retrive the Database")
   }
 
   try {
     await api.get("/save");
   } catch (error) {
     console.error(`Network Error: ${error}`);
+    alert("Error: Could not retrive the Database")
   }
 };
 
@@ -27,5 +29,6 @@ export const fetchSavedNotes = async () => {
     return response;
   } catch (error) {
     console.error(`Network Error: ${error}`);
+    alert("Error: Could not retrive the Database")
   }
 };
