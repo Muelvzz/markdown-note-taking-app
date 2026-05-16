@@ -37,7 +37,7 @@ export default function Solution() {
                     <BsChevronCompactLeft onClick={prevSlide} size={20} />
                 </div>
 
-                <div className="w-full h-full flex justify-center items-center">
+                <div>
                     <Card 
                         image={cardData[currentIndex].image}
                         title={cardData[currentIndex].title}

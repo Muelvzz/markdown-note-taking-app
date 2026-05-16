@@ -1,0 +1,30 @@
+#dropdown-card-container {
+    position: fixed;
+    top: 15px;
+    left: 0;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+#dropdown-card {
+    pointer-events: auto;
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+    transform: translateY(-100%);
+    }
+    to {
+    transform: translateY(0);
+    }
+}

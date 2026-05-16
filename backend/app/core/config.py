@@ -15,3 +15,7 @@ postgres_username = os.getenv("POSTGRES_USERNAME")
 postgres_password = os.getenv("POSTGRES_PASSWORD")
 postgres_host = os.getenv("POSTGRES_HOST")
 postgres_name = os.getenv("POSTGRES_NAME")
+
+origins = [
+    "http://localhost:5173",
+]

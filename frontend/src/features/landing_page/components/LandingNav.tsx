@@ -9,6 +9,7 @@ export default function LandingNav() {
                 flex justify-between mt-1 
                 items-center
                 '
+            id='landing-navigation'
         >
             <div>
                 <img 
