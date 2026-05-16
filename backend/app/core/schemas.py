@@ -18,7 +18,8 @@ class UploadResponse(BaseModel):
 class BaseNote(BaseModel):
     id: int | None = None
     file_name: str
-    content: str
+    file_path: str
+    last_edited: datetime
 
 class CreateNote(BaseNote):
     pass

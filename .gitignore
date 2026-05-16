@@ -4,3 +4,4 @@ project-description.txt
 backend/.env
 test.md
 test.py
+backend/notes
