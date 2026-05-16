@@ -4,12 +4,12 @@ from pathlib import Path
 from sqlalchemy.orm import Session
 from datetime import datetime
 
-from ..core.cache import set_cache
+from ..core.cache import delete_cache
 from ..core.config import allowed_extensions
 from ..core import schemas, models
 from .router_init import router
 from ..core.database import get_db
-from ..utils.save_file_to_notes import save_into_notes_folder
+from ..utils.notes_folder_utils import save_into_notes_folder
 
 @router.post("/file", status_code=status.HTTP_202_ACCEPTED, response_model=schemas.UploadResponse)
 async def upload_file(
@@ -28,6 +28,8 @@ async def upload_file(
             message = f"The file must be the following {allowed_extensions}"
 
         else:
+            await delete_cache("all_notes")
+
             filename = file.filename
             file_content = await file.read()
             file_path = await save_into_notes_folder(file_content.decode("utf-8"))

@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routes import upload_file, view_all_notes, clear_cache, update_note, view_notes_file
+from app.routes import upload_file, view_all_notes, clear_cache, update_note, view_notes_file, delete_note
 from app.core.cache import init_redis, close_redis
 from app.core.database import engine
 from app.core.config import origins, notes_folder
@@ -38,6 +38,7 @@ app.include_router(view_notes_file.router)
 app.include_router(view_all_notes.router)
 app.include_router(clear_cache.router)
 app.include_router(update_note.router)
+app.include_router(delete_note.router)
 
 if __name__ == "__main__":
     app()

@@ -8,7 +8,7 @@ from ..core.database import get_db
 from ..core import schemas, models
 from .router_init import router
 from ..utils.data_to_dict import data_to_dict
-from ..utils.read_notes import read_notes_from_folder
+from ..utils.notes_folder_utils import read_notes_from_folder
 
 @router.get("/notes", status_code=status.HTTP_200_OK, response_model=schemas.AllNotesOut)
 async def view_all_notes(db: Session = Depends(get_db)):
