@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 
+import LandingFooter from "../../features/landing_page/components/LandingFooter"
 import Nav from "../../components/Nav"
 import NoteCard from "../../features/notes-page/components/NoteCard"
 import NoSearchesFound from "../../features/notes-page/components/NoSearchesFound"
@@ -41,7 +42,7 @@ export default function Notes() {
                 </div>
                 <div className="
                     bg-(--secondary-color) text-(--primary-color) py-1 rounded-lg
-                    flex gap-x-2 px-4
+                    flex md:gap-x-2 lg:px-4 md:px-2 px-1
                 ">
                     <button className="p-1">
                         <img 
@@ -51,7 +52,7 @@ export default function Notes() {
                     </button>
                     <input 
                         type="text" 
-                        className="w-full text-(--primary-color) px-3"
+                        className="w-full text-(--primary-color) px-1"
                         placeholder="Search Input"
                         value={ search }
                         onChange={(e) => setSearch(e.target.value)}
@@ -63,6 +64,9 @@ export default function Notes() {
                     }
                 </div>
             </main>
+            <footer>
+                <LandingFooter />
+            </footer>
         </>
     )
 }

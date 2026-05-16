@@ -7,7 +7,7 @@ export default function Nav() {
             <nav id='main-navigation'
                 className='flex justify-between items-center'
             >
-                <div className='flex justify-between gap-x-5 items-center'>
+                <div className='flex justify-between gap-x-2 lg:gap-x-5 items-center'>
                     <div>
                         <img src={logo} alt="Logo image" className='w-24'/>
                     </div>
