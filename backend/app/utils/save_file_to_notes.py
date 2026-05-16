@@ -10,4 +10,4 @@ async def save_into_notes_folder(file_content):
 
   file_path = path.write_text(file_content, encoding="utf-8")
 
-  return str(f"backend\{path}")
+  return str(path)
