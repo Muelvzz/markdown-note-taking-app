@@ -21,12 +21,16 @@ export default function NoteCard({ notes }: NoteList) {
                   <h3>{ note.file_name }</h3>
                 </div>
                 <div>
+<<<<<<< HEAD
                   <button 
                     id="note-card-button-styles button"
                     type="button"
                     data-modal-target="popup-modal" 
                     data-modal-toggle="popup-modal"
                   >
+=======
+                  <button id="note-card-button-styles">
+>>>>>>> 640c13c751897f1e1335f2eb7f4cb8519b91756c
                     <img src={ deleteImage } alt="Delete Image Icon" 
                       className="w-2 md:w-4 lg:w-6"
                     />
