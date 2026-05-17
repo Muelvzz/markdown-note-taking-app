@@ -1,0 +1,6 @@
+#note-card-button-styles {
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 50%;
+  padding: 2px;
+}
