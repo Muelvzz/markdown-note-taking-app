@@ -40,20 +40,3 @@ async def update_file(update_note: schemas.UpdateNote, id: int, db: Session = De
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occured."
         )
-    
-""""
-User sends a request
-    Frontend gives the necessary data to the user
-    User edits the response and sends a request once again
-
-    Backend finds the id to the data
-        if it doesn't find any, then the backend raises an error
-    
-    Backend updates the row of the id from the user's input
-    Backend saves the updated data
-
-    Backend updates the fil content of the id from the user's input
-    Backend deletes the cache
-
-    Backend sends a positive response
-"""
