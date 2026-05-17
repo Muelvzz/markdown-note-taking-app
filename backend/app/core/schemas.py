@@ -3,24 +3,16 @@ from datetime import datetime
 from typing import List
 
 
-class BaseNote(BaseModel):
-    id: int | None = None
-    file_name: str
-    file_path: str
-    last_edited: datetime
-
-
-class CreateNote(BaseNote):
-    pass
-
-
-class UploadNote(BaseModel):
+class UpdateNote(BaseModel):
     file_name: str
     file_content: str
 
 
-class NoteOut(CreateNote):
+class NoteOut(BaseModel):
+    id: int | None = None
+    file_name: str
     created_at: datetime
+    last_edited: datetime
     file_content: str
 
     class Config:

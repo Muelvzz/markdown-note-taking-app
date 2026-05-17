@@ -10,7 +10,7 @@ from .. utils.notes_folder_utils import update_existing_files
 from . router_init import router
 
 @router.patch("/file/{id}", status_code=status.HTTP_202_ACCEPTED, response_model=schemas.UploadResponse)
-async def update_file(update_note: schemas.UploadNote, id: int, db: Session = Depends(get_db)):
+async def update_file(update_note: schemas.UpdateNote, id: int, db: Session = Depends(get_db)):
     try:
         note_to_be_updated = db.query(models.Notes).filter(models.Notes.id == id).first()
         user_note = update_note.model_dump(exclude_unset=True)
