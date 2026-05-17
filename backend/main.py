@@ -10,7 +10,6 @@ import app.core.models as database_models
 
 database_models.Base.metadata.create_all(bind=engine)
 
-print(f"Exist: {notes_folder.exists()}")
 if not notes_folder.exists():
     notes_folder.mkdir(exist_ok=True)
 

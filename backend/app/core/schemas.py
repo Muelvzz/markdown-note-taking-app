@@ -14,8 +14,9 @@ class CreateNote(BaseNote):
     pass
 
 
-class UploadNote(BaseNote):
-    pass
+class UploadNote(BaseModel):
+    file_name: str
+    file_content: str
 
 
 class NoteOut(CreateNote):

@@ -33,3 +33,9 @@ async def read_specific_notes_from_folder(file_path: str):
 def delete_file_from_notes_folder(file_path: str):
   path = Path(file_path)
   path.unlink()
+
+
+def update_existing_files(filepath: str, file_content: str):
+  path = Path(filepath)
+
+  file_path = path.write_text(file_content, encoding="utf-8")
