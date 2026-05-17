@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
 
@@ -19,3 +20,5 @@ postgres_name = os.getenv("POSTGRES_NAME")
 origins = [
     "http://localhost:5173",
 ]
+
+notes_folder = Path(os.path.join("notes"))

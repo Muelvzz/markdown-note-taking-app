@@ -2,13 +2,16 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routes import upload_file, view_uploaded_file, view_all_notes, save_file, clear_cache, update_note
+from app.routes import upload_file, view_all_notes, clear_cache, update_note, view_notes_file, delete_note
 from app.core.cache import init_redis, close_redis
 from app.core.database import engine
-from app.core.config import origins
+from app.core.config import origins, notes_folder
 import app.core.models as database_models
 
 database_models.Base.metadata.create_all(bind=engine)
+
+if not notes_folder.exists():
+    notes_folder.mkdir(exist_ok=True)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -30,11 +33,11 @@ app.add_middleware(
 )
 
 app.include_router(upload_file.router)
-app.include_router(view_uploaded_file.router)
+app.include_router(view_notes_file.router)
 app.include_router(view_all_notes.router)
-app.include_router(save_file.router)
 app.include_router(clear_cache.router)
 app.include_router(update_note.router)
+app.include_router(delete_note.router)
 
 if __name__ == "__main__":
     app()

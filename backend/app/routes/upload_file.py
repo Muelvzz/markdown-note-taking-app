@@ -1,16 +1,20 @@
-from fastapi import status, UploadFile, File, HTTPException
+from fastapi import status, UploadFile, File, HTTPException, Depends
 from typing import Annotated
 from pathlib import Path
-import json
+from sqlalchemy.orm import Session
+from datetime import datetime
 
-from ..core.cache import set_cache
+from ..core.cache import delete_cache
 from ..core.config import allowed_extensions
-from ..core import schemas
+from ..core import schemas, models
 from .router_init import router
+from ..core.database import get_db
+from ..utils.notes_folder_utils import save_into_notes_folder
 
 @router.post("/file", status_code=status.HTTP_202_ACCEPTED, response_model=schemas.UploadResponse)
 async def upload_file(
     file: Annotated[UploadFile, File()],
+    db: Session = Depends(get_db)
     ):
 
     status_code = 0
@@ -24,20 +28,19 @@ async def upload_file(
             message = f"The file must be the following {allowed_extensions}"
 
         else:
+            await delete_cache("all_notes")
+
             filename = file.filename
             file_content = await file.read()
+            file_path = await save_into_notes_folder(file_content.decode("utf-8"))
 
-            uploaded_file = {
-                "file_name": filename,
-                "content": file_content.decode("utf-8"),
-            }
+            new_note = models.Notes(file_name=filename, file_path=file_path, last_edited=datetime.utcnow())
+            db.add(new_note)
+            db.commit()
+            db.refresh(new_note)
 
             status_code = status.HTTP_200_OK
             message = "Upload successfully"
-            file_dict = uploaded_file
-
-            file_into_json = json.dumps(uploaded_file)
-            await set_cache("uploaded_file", file_into_json, 600)
 
         return schemas.UploadResponse.response(status=status_code, msg=message, file=file_dict)
     

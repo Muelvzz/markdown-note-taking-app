@@ -2,32 +2,18 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import List
 
-class UploadResponse(BaseModel):
-    status_code: int
-    message: str
-    file: dict[str, str] | None = None
 
-    @classmethod
-    def response(cls, status, msg, file=None):
-        return cls(status_code=status, message=msg, file=file)
-
-    class Config:
-        from_attributes = True
+class UpdateNote(BaseModel):
+    file_name: str
+    file_content: str
 
 
-class BaseNote(BaseModel):
+class NoteOut(BaseModel):
     id: int | None = None
     file_name: str
-    content: str
-
-class CreateNote(BaseNote):
-    pass
-
-class UploadNote(BaseNote):
-    pass
-
-class NoteOut(CreateNote):
     created_at: datetime
+    last_edited: datetime
+    file_content: str
 
     class Config:
         from_attributes = True
@@ -41,6 +27,19 @@ class AllNotesOut(BaseModel):
     @classmethod
     def success(self, notes: list, message="Query successful"):
         return self(message=message, all_notes=notes)
+
+    class Config:
+        from_attributes = True
+
+
+class UploadResponse(BaseModel):
+    status_code: int
+    message: str
+    file: NoteOut | None = None
+
+    @classmethod
+    def response(cls, status, msg, file=None):
+        return cls(status_code=status, message=msg, file=file)
 
     class Config:
         from_attributes = True

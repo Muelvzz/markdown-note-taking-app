@@ -7,9 +7,8 @@ from ..core.cache import set_cache, get_cache
 from ..core.database import get_db
 from ..core import schemas, models
 from .router_init import router
-
-def object_to_dictionary(object):
-    return {c.name: getattr(object, c.name) for c in object.__table__.columns}
+from ..utils.data_to_dict import data_to_dict
+from ..utils.notes_folder_utils import read_notes_from_folder
 
 @router.get("/notes", status_code=status.HTTP_200_OK, response_model=schemas.AllNotesOut)
 async def view_all_notes(db: Session = Depends(get_db)):
@@ -22,8 +21,10 @@ async def view_all_notes(db: Session = Depends(get_db)):
             all_notes = json.loads(all_notes_from_redis)
         
         else:
-            all_notes_from_db = db.query(models.Notes).all()
-            all_notes = [object_to_dictionary(data) for data in all_notes_from_db]
+            all_notes_from_db = db.query(models.Notes).limit(10).all()
+            all_notes_from_db_to_list = [data_to_dict(data) for data in all_notes_from_db]
+
+            all_notes = await read_notes_from_folder(all_notes_from_db_to_list)
 
             encoded_all_notes = jsonable_encoder(all_notes)
             await set_cache("all_notes", json.dumps(encoded_all_notes))
