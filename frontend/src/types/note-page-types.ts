@@ -1,7 +1,7 @@
 export interface Note {
   id: string;
   file_name: string;
-  content: string;
+  file_content: string;
   created_at: string;
 }
 

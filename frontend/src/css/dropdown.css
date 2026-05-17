@@ -1,17 +1,17 @@
 #dropdown-card-container {
     position: fixed;
-    top: 15px;
-    left: 0;
-    min-width: 100%;
+    top: 50%;
+    left: 50%;
+    min-width: 80%;
     display: flex;
     justify-content: center;
     z-index: 1000;
     pointer-events: none;
+    transform: translate(-50%, -50%)
 }
 
 #dropdown-card {
     pointer-events: auto;
-    padding: 1rem 2rem;
     background-color: var(--secondary-color);
     border: 1px solid var(--primary-color);
     border-radius: 5px;

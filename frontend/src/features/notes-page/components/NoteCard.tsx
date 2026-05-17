@@ -14,7 +14,7 @@ export default function NoteCard({ notes }: NoteList) {
             <div className="flex flex-col gap-y-2">
               <h3>{ note.file_name }</h3>
               <p>{ note.created_at }</p>
-              <p>{ note.content.slice(0, 200) }</p>
+              <p>{ note.file_content.slice(0, 200) }</p>
             </div>
         </div>
       ))}
